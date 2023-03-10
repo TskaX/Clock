@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./時鐘.css">
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <title>星空時鐘</title>
+</head>
+
+<body>
+    <!-- 流星 -->
+    <img src="./star.png" alt="" class="star1">
+    <img src="./star.png" alt="" class="star2">
+    <img src="./star.png" alt="" class="star3">
+    <img src="./star.png" alt="" class="star4">
+    <img src="./fish.png" alt="" class="fish">
+    <!-- 年月日 -->
+    <div id="calendar">
+        <div id="year" class="inline"></div>
+        <div id="month" class="inline"></div>
+        <div id="day" class="inline"></div>
+    </div>
+    <!-- 時鐘本體 -->
+    <div id="clock">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
+        <span>10</span>
+        <span>11</span>
+        <span>12</span>
+        <!-- 時鐘指針 -->
+        <div>
+            <img src="./cursor2H.png" alt="" id="hour">
+        </div>
+        <div>
+            <img src="./cursor2M.png" alt="" id="minute">
+        </div>
+        <div>
+            <img src="./cursor2S.png" alt="" id="second">
+        </div>
+    </div>
+    <!-- 星座盤 -->
+    <div class="star-sign">
+        <div><img src="./arrow2.png" alt="" id="twelve"></div>
+    </div>
+    <script src="./jquery-3.6.1.min.js"></script>
+    <script>
+        const hour = document.getElementById('hour');
+        const minute = document.getElementById('minute');
+        const second = document.getElementById('second');
+
+        const year = document.getElementById('year');
+        const month = document.getElementById('month');
+        const day = document.getElementById('day');
+
+        const twelve = document.getElementById('twelve');
+
+        setInterval(() => {
+            // 抓時間和日期
+            const date = new Date()
+            hour.style.transform = `rotate(${date.getHours() * 30}deg)`
+            minute.style.transform = `rotate(${date.getMinutes() * 6}deg)`
+            second.style.transform = `rotate(${date.getSeconds() * 6}deg)`
+            year.innerHTML = date.getFullYear();
+            month.innerHTML = (date.getMonth() + 1);
+            day.innerHTML = date.getDate();
+            // 星座判斷
+            if (((date.getMonth() + 1) == 10 && (date.getDate() <= 23)) || ((date.getMonth() + 1) == 9) && (date.getDate() >= 23)) {
+                twelve.style.transform = 'rotate(180deg)';
+            }
+            else if (((date.getMonth() + 1) == 11 && (date.getDate() <= 21)) || ((date.getMonth() + 1) == 10) && (date.getDate() >= 24)) {
+                twelve.style.transform = 'rotate(210deg)';
+            }
+            else if (((date.getMonth() + 1) == 12 && (date.getDate() <= 21)) || ((date.getMonth() + 1) == 11) && (date.getDate() >= 22)) {
+                twelve.style.transform = 'rotate(240deg)';
+            }
+            else if (((date.getMonth() + 1) == 1 && (date.getDate() <= 19)) || ((date.getMonth() + 1) == 12) && (date.getDate() >= 22)) {
+                twelve.style.transform = 'rotate(270deg)';
+            }
+            else if (((date.getMonth() + 1) == 2 && (date.getDate() <= 18)) || ((date.getMonth() + 1) == 1) && (date.getDate() >= 20)) {
+                twelve.style.transform = 'rotate(300deg)';
+            }
+            else if (((date.getMonth() + 1) == 3 && (date.getDate() <= 20)) || ((date.getMonth() + 1) == 2) && (date.getDate() >= 19)) {
+                twelve.style.transform = 'rotate(330deg)';
+            }
+            else if (((date.getMonth() + 1) == 4 && (date.getDate() <= 19)) || ((date.getMonth() + 1) == 3) && (date.getDate() >= 21)) {
+                twelve.style.transform = 'rotate(360deg)';
+            }
+            else if (((date.getMonth() + 1) == 5 && (date.getDate() <= 20)) || ((date.getMonth() + 1) == 4) && (date.getDate() >= 20)) {
+                twelve.style.transform = 'rotate(30deg)';
+            }
+            else if (((date.getMonth() + 1) == 6 && (date.getDate() <= 21)) || ((date.getMonth() + 1) == 5) && (date.getDate() >= 21)) {
+                twelve.style.transform = 'rotate(60deg)';
+            }
+            else if (((date.getMonth() + 1) == 7 && (date.getDate() <= 22)) || ((date.getMonth() + 1) == 6) && (date.getDate() >= 22)) {
+                twelve.style.transform = 'rotate(90deg)';
+            }
+            else if (((date.getMonth() + 1) == 8 && (date.getDate() <= 22)) || ((date.getMonth() + 1) == 7) && (date.getDate() >= 23)) {
+                twelve.style.transform = 'rotate(120deg)';
+            }
+            else if (((date.getMonth() + 1) == 9 && (date.getDate() <= 22)) || ((date.getMonth() + 1) == 8) && (date.getDate() >= 23)) {
+                twelve.style.transform = 'rotate(150deg)';
+            }
+        }, 1000);
+
+        //'1'.padStart(2,'0'); => '01'
+    </script>
+</body>
+
+</html>
